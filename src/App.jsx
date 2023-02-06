@@ -1,9 +1,11 @@
-import FirstComponent from "./components/FirstComponent";
+import Header from "./components/Header";
+import PokemonsGrid from "./components/PokemonsGrid";
 
 function App() {
     return (
-        <div className="App">
-            <FirstComponent />
+        <div className="App" style={{ backgroundColor: "#000" }}>
+            <Header />
+            <PokemonsGrid />
         </div>
     );
 }
