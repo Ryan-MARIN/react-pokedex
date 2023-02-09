@@ -1,0 +1,10 @@
+body {
+    background-color: #292C33;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    color : white;
+}
+
+.MuiAppBar-root {
+    background-color: #383b42 !important;
+}

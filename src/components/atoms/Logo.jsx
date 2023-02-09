@@ -1,8 +1,22 @@
 import React from "react";
-import logoPokedex from "../../ressources/logo-pokedex.svg";
+import logoPokedexLarge from "../../ressources/logo-pokedex.svg";
+import logoPokedexSmall from "../../ressources/logo-pokedex-small.svg";
+import { Box } from "@mui/material";
 
-const Logo = ({ size = 5 }) => {
-    return <img src={logoPokedex} alt="logo-pokedex" height={size * 10} />;
+const Logo = () => {
+    return (
+        <Box
+            component="img"
+            sx={{
+                content: {
+                    xs: `url(${logoPokedexSmall})`,
+                    sm: `url(${logoPokedexLarge})`,
+                },
+            }}
+            alt="logo-pokedex"
+            height={50}
+        />
+    );
 };
 
 export default Logo;
