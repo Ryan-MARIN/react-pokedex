@@ -1,8 +1,12 @@
 body  {
     background-color: #292C33;
     font-family: 'Montserrat';
-    font-size: 22px;
+    font-size: 20px;
     color : white;
+}
+
+::placeholder {
+    font-family: 'Montserrat';
 }
 
 .MuiAppBar-root {
@@ -12,4 +16,8 @@ body  {
 footer {
     font-size: 16px;
     color:#75777a
+}
+
+img {
+    font-size: 16px;
 }
