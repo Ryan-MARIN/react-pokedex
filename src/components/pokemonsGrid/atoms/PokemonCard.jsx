@@ -1,7 +1,7 @@
 import { Paper } from '@mui/material';
 import React from 'react';
 
-const PokemonCard = () => {
+const PokemonCard = ({ name }) => {
     return (
         <Paper
             elevation={6}
@@ -10,7 +10,7 @@ const PokemonCard = () => {
                 borderRadius: '8px',
             }}
         >
-            TODO PokemonsGrid
+            {name}
         </Paper>
     );
 };
