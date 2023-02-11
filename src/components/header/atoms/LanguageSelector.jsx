@@ -1,4 +1,4 @@
-import { ButtonBase } from '@mui/material';
+import { ButtonBase, Box } from '@mui/material';
 import React, { useState } from 'react';
 
 const LanguageSelector = () => {
@@ -11,6 +11,11 @@ const LanguageSelector = () => {
 
     return (
         <ButtonBase onClick={switchLang} disableRipple>
+            <Box display={{ xs: 'none', md: 'block' }}>Language&nbsp;:&nbsp;</Box>
+            <Box className="mono" display={{ xs: 'none', sm: 'block' }}>
+                {languages[langIndex].toUpperCase()}
+            </Box>
+            &nbsp;
             <img
                 src={`https://flagsapi.com/${languages[langIndex].toUpperCase()}/shiny/32.png`}
                 alt="lang"

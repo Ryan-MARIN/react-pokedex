@@ -1,7 +1,8 @@
 import Header from 'components/header/Header';
 import PokemonsGrid from 'components/pokemonsGrid/PokemonsGrid';
 import { React } from 'react';
-import './index.css';
+import './styles/index.css';
+import './styles/scrollbar.css';
 import { Box } from '@mui/system';
 import Footer from 'components/Footer';
 

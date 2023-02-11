@@ -10,7 +10,7 @@ const Logo = () => {
             sx={{
                 content: {
                     xs: `url(${logoPokedexSmall})`,
-                    sm: `url(${logoPokedexLarge})`,
+                    md: `url(${logoPokedexLarge})`,
                 },
             }}
             alt="logo-pokedex"
