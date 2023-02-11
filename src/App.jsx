@@ -1,5 +1,5 @@
-import Header from "./components/Header";
-import PokemonsGrid from "./components/PokemonsGrid";
+import Header from "./components/header/Header";
+import PokemonsGrid from "./components/pokemonsGrid/PokemonsGrid";
 import { React } from "react";
 import "./index.css";
 import { Box } from "@mui/system";

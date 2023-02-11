@@ -1,7 +1,7 @@
 import { AppBar, Toolbar } from "@mui/material";
 import React from "react";
-import Logo from "./header/Logo";
-import SearchBar from "./header/SearchBar";
+import Logo from "./atoms/Logo";
+import SearchBar from "./atoms/SearchBar";
 
 const Header = () => {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
-import logoPokedexLarge from "../../ressources/logo-pokedex.svg";
-import logoPokedexSmall from "../../ressources/logo-pokedex-small.svg";
+import logoPokedexLarge from "../../../ressources/logo-pokedex.svg";
+import logoPokedexSmall from "../../../ressources/logo-pokedex-small.svg";
 import { Box } from "@mui/material";
 
 const Logo = () => {
