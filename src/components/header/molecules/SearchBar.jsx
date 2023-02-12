@@ -5,15 +5,8 @@ import { useState } from 'react';
 
 const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState(null);
-    // const [onePiece, setOnePiece] = useState(false);
 
-    function handleValidate(searchQuery) {
-        if (/One Piece/i.test(searchQuery)) {
-            // setOnePiece(true);
-        } else {
-            alert(searchQuery);
-        }
-    }
+    function handleValidate(searchQuery) {}
 
     return (
         <Stack direction={'row'} alignItems={'center'} style={{ width: '30rem' }}>
@@ -32,6 +25,13 @@ const SearchBar = () => {
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
                         handleValidate(searchQuery);
+                    }
+                }}
+                onChange={(e) => {
+                    if (e.target.value.match(/^one piece$/i)) {
+                        document.getElementById('one-piece').style.display = 'flex';
+                    } else if (document.getElementById('one-piece').style.display !== 'none') {
+                        document.getElementById('one-piece').style.display = 'none';
                     }
                 }}
             />
