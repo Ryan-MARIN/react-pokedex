@@ -10,11 +10,12 @@
 *::-webkit-scrollbar-thumb {
     background-color: red;
     border-radius: 100px;
-    border-color: #292C33;
-    border-style: solid;
-    border-width: 6px;
+    border: 6px solid transparent;
+    background-clip: content-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
     border-width: 4px;
+    background-clip: content-box;
+
 }
