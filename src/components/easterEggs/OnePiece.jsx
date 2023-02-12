@@ -10,31 +10,27 @@ const OnePiece = () => {
                 m: '0.5rem',
                 borderRadius: '0.5rem',
                 overflow: 'hidden',
-                '&:hover': {
-                    m: '0.25rem',
-                    borderRadius: '1rem',
-                },
-                bgcolor: 'black',
                 width: '100%',
+                bgcolor: 'black',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
             }}
         >
-            <Stack
+            {/* <Stack
                 sx={{
                     alignItems: 'center',
                     justifyContent: 'center',
                     overflow: 'hidden',
-                    '&:hover': { p: '0.25rem' },
                 }}
-            >
-                <div style={{ height: '100%' }}>
-                    <iframe
-                        height="100%"
-                        weight="100%"
-                        src="https://www.youtube.com/embed/xPyJ2XhSKOI"
-                        frameborder="0"
-                    />
-                </div>
-            </Stack>
+            > */}
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/xPyJ2XhSKOI"
+                frameborder="0"
+            />
+            {/* </Stack> */}
         </Paper>
     );
 };
