@@ -8,7 +8,7 @@ import Footer from 'components/Footer';
 
 function App() {
     return (
-        <Box paddingTop={'64px'} paddingX={{ xs: '16px', sm: '24px' }}>
+        <Box paddingTop={'4rem'} paddingX={{ xs: '1rem', sm: '1.5rem' }}>
             <Header />
             <PokemonsGrid />
             <Footer />

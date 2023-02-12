@@ -9,9 +9,9 @@ const Header = () => {
         <AppBar>
             <Toolbar>
                 <Logo />
-                <div style={{ flexGrow: 1, minWidth: '16px' }} />
+                <div style={{ flexGrow: 1, minWidth: '1rem' }} />
                 <SearchBar />
-                <div style={{ flexGrow: 1, minWidth: '8px' }} />
+                <div style={{ flexGrow: 1, minWidth: '0.5rem' }} />
                 <LanguageSelector />
             </Toolbar>
         </AppBar>

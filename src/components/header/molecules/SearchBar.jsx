@@ -11,7 +11,7 @@ const SearchBar = () => {
     }
 
     return (
-        <Stack direction={'row'} alignItems={'center'} style={{ width: '500px' }}>
+        <Stack direction={'row'} alignItems={'center'} style={{ width: '30rem' }}>
             <InputBase
                 onInput={(e) => {
                     setSearchQuery(e.target.value);
@@ -19,8 +19,8 @@ const SearchBar = () => {
                 placeholder="Recherchez un Pokémon..."
                 style={{
                     backgroundColor: 'white',
-                    borderRadius: '100px',
-                    padding: '0px 8px 0px',
+                    borderRadius: '100rem',
+                    padding: '0rem 0.5rem 0rem',
                     borderStyle: 'none',
                     flexGrow: 1,
                 }}

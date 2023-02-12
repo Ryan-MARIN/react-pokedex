@@ -48,9 +48,9 @@ const PokemonType = ({ type }) => {
         <div
             style={{
                 backgroundColor: getTypeColor(type),
-                borderRadius: '100px',
-                padding: '2px 8px 2px 8px',
-                margin: '0px 2px 0px 2px',
+                borderRadius: '100rem',
+                padding: '0.125rem 0.5rem 0.125rem 0.5rem',
+                margin: '0rem 0.125rem 0rem 0.125rem',
                 fontSize: '12px',
                 color: 'white',
             }}
