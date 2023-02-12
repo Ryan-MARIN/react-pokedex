@@ -1,5 +1,4 @@
 import React from 'react';
-import { Stack } from '@mui/system';
 import { Paper } from '@mui/material';
 
 const OnePiece = () => {
@@ -17,20 +16,13 @@ const OnePiece = () => {
                 justifyContent: 'center',
             }}
         >
-            {/* <Stack
-                sx={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    overflow: 'hidden',
-                }}
-            > */}
             <iframe
+                title="one-piece"
                 width="100%"
                 height="100%"
                 src="https://www.youtube.com/embed/xPyJ2XhSKOI"
-                frameborder="0"
+                style={{ borderStyle: 'none' }}
             />
-            {/* </Stack> */}
         </Paper>
     );
 };

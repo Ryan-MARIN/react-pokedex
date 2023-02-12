@@ -1,10 +1,19 @@
 import { Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PokemonCard from './molecules/PokemonCard';
-import pokemons from 'ressources/pokemons.json';
 import OnePiece from 'components/easterEggs/OnePiece';
 
-const PokemonsGrid = () => {
+const PokemonsGrid = ({ searchQuery, lang }) => {
+    const [pokemons, setPokemons] = useState([]);
+
+    useEffect(() => {
+        fetch('https://pokedex-jgabriele.vercel.app/pokemons.json', {})
+            .then((response) => response.json())
+            .then((data) => {
+                setPokemons(data);
+            });
+    });
+
     return (
         <Grid container display={'flex'}>
             <Grid
@@ -27,6 +36,7 @@ const PokemonsGrid = () => {
                             name={pokemon.names.fr}
                             img={pokemon.image}
                             pokemonTypes={pokemon.types}
+                            englishName={pokemon.names.en}
                         ></PokemonCard>
                     </Grid>
                 );

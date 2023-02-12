@@ -1,8 +1,8 @@
 import { ButtonBase, Box } from '@mui/material';
 import React, { useState } from 'react';
+import languages from 'ressources/languages';
 
 const LanguageSelector = () => {
-    const languages = ['fr', 'gb', 'jp'];
     const [langIndex, setLangIndex] = useState(0);
 
     function switchLang() {

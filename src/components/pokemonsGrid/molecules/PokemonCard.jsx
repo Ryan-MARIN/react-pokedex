@@ -4,7 +4,7 @@ import PokemonTypes from './PokemonTypes';
 import { Stack } from '@mui/system';
 // import logoPokedexSmall from 'ressources/logo-pokedex-small.svg';
 
-const PokemonCard = ({ id, name, img, pokemonTypes }) => {
+const PokemonCard = ({ id, name, img, pokemonTypes, englishName }) => {
     return (
         <Paper
             elevation={6}
@@ -23,18 +23,33 @@ const PokemonCard = ({ id, name, img, pokemonTypes }) => {
                     '&:hover': { p: '0.25rem' },
                 }}
             >
-                <div style={{ padding: '0.5rem', justifyContent: 'center' }}>
-                    <Stack direction={'row'} alignItems={'top'} justifyContent={'space-between'}>
-                        <Box sx={{ fontSize: '18px', fontWeight: 'bold' }}>{name}</Box>
-                        <Box>No.{id}</Box>
-                    </Stack>
-                    <Stack alignItems={'center'} justifyContent={'space-between'}>
-                        {/* //TODO Lazy Loading */}
-                        <img src={img} alt={name.toLowerCase()} />
-                        {/* <img src={logoPokedexSmall} alt={name.toLowerCase()} height="96px" /> */}
-                        <PokemonTypes types={pokemonTypes} />
-                    </Stack>
-                </div>
+                <a
+                    href={`https://pokemondb.net/pokedex/${englishName}`}
+                    target="_blank"
+                    style={{ textDecoration: 'inherit', color: 'inherit' }}
+                >
+                    <div
+                        style={{
+                            padding: '0.5rem',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Stack
+                            direction={'row'}
+                            alignItems={'top'}
+                            justifyContent={'space-between'}
+                        >
+                            <Box sx={{ fontSize: '18px', fontWeight: 'bold' }}>{name}</Box>
+                            <Box>No.{id}</Box>
+                        </Stack>
+                        <Stack alignItems={'center'} justifyContent={'space-between'}>
+                            {/* //TODO Lazy Loading */}
+                            <img src={img} alt={name.toLowerCase()} />
+                            {/* <img src={logoPokedexSmall} alt={name.toLowerCase()} height="96px" /> */}
+                            <PokemonTypes types={pokemonTypes} />
+                        </Stack>
+                    </div>
+                </a>
             </CardActionArea>
         </Paper>
     );
