@@ -2,6 +2,7 @@ import { CardActionArea, Paper, Box } from '@mui/material';
 import React from 'react';
 import PokemonTypes from './PokemonTypes';
 import { Stack } from '@mui/system';
+import logoPokedexSmall from 'ressources/logo-pokedex-small.svg';
 
 const PokemonCard = ({ id, name, img, pokemonTypes }) => {
     return (
@@ -28,7 +29,9 @@ const PokemonCard = ({ id, name, img, pokemonTypes }) => {
                         <Box>No.{id}</Box>
                     </Stack>
                     <Stack alignItems={'center'} justifyContent={'space-between'}>
+                        {/* //TODO Lazy Loading */}
                         <img src={img} alt={name.toLowerCase()} />
+                        {/* <img src={logoPokedexSmall} alt={name.toLowerCase()} height="96px" /> */}
                         <PokemonTypes types={pokemonTypes} />
                     </Stack>
                 </div>
