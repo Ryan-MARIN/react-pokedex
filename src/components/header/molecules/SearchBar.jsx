@@ -5,9 +5,14 @@ import { useState } from 'react';
 
 const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState(null);
+    // const [onePiece, setOnePiece] = useState(false);
 
-    function handleValidate() {
-        alert('votre recherche : ' + searchQuery);
+    function handleValidate(searchQuery) {
+        if (/One Piece/i.test(searchQuery)) {
+            // setOnePiece(true);
+        } else {
+            alert(searchQuery);
+        }
     }
 
     return (
@@ -26,7 +31,7 @@ const SearchBar = () => {
                 }}
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                        handleValidate();
+                        handleValidate(searchQuery);
                     }
                 }}
             />
