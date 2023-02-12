@@ -1,6 +1,6 @@
 import { AppBar, Toolbar } from '@mui/material';
 import React from 'react';
-import LanguageSelector from './atoms/LanguageSelector';
+import LanguageSelector from './molecules/LanguageSelector';
 import Logo from './atoms/Logo';
 import SearchBar from './molecules/SearchBar';
 

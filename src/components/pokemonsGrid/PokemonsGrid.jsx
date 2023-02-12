@@ -1,20 +1,27 @@
 import { Grid } from '@mui/material';
 import React from 'react';
-import PokemonCard from './atoms/PokemonCard';
+import PokemonCard from './molecules/PokemonCard';
+import pokemons from 'ressources/pokemons.json';
 
 const PokemonsGrid = () => {
-    const pkmns = ['bulbi', 'sala', 'cara', 'pika'];
+    console.log(pokemons[2].names.fr);
     return (
-        <Grid spacing={2} container display={'flex'}>
-            {/* {pkmns.forEach((pkmn) => (
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                    <PokemonCard name={pkmn}></PokemonCard>
-                </Grid>
-            ))} */}
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                <PokemonCard name={pkmns[0]}></PokemonCard>
+        <>
+            <Grid container display={'flex'}>
+                {pokemons.map((pokemon, index) => {
+                    return (
+                        <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={2}>
+                            <PokemonCard
+                                id={pokemon.id}
+                                name={pokemon.names.fr}
+                                img={pokemon.image}
+                                pokemonTypes={pokemon.types}
+                            ></PokemonCard>
+                        </Grid>
+                    );
+                })}
             </Grid>
-        </Grid>
+        </>
     );
 };
 

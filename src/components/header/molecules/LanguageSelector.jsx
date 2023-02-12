@@ -18,7 +18,7 @@ const LanguageSelector = () => {
             &nbsp;
             <img
                 src={`https://flagsapi.com/${languages[langIndex].toUpperCase()}/shiny/32.png`}
-                alt="lang"
+                alt={`lang_${languages[langIndex]}`}
             />
         </ButtonBase>
     );
