@@ -6,7 +6,18 @@ import { useState } from 'react';
 const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState(null);
 
-    function handleValidate(searchQuery) {}
+    function easterEggs(searchQuery) {
+        if (
+            searchQuery.match(/^one piece$/i) &&
+            document.getElementById('one-piece').style.display === 'none'
+        )
+            document.getElementById('one-piece').style.display = 'flex';
+        else document.getElementById('one-piece').style.display = 'none';
+    }
+
+    function handleValidate(searchQuery) {
+        easterEggs(searchQuery);
+    }
 
     return (
         <Stack direction={'row'} alignItems={'center'} style={{ width: '30rem' }}>
@@ -24,14 +35,8 @@ const SearchBar = () => {
                 }}
                 onKeyPress={(e) => {
                     if (e.key === 'Enter') {
+                        setSearchQuery(e.target.value);
                         handleValidate(searchQuery);
-                    }
-                }}
-                onChange={(e) => {
-                    if (e.target.value.match(/^one piece$/i)) {
-                        document.getElementById('one-piece').style.display = 'flex';
-                    } else if (document.getElementById('one-piece').style.display !== 'none') {
-                        document.getElementById('one-piece').style.display = 'none';
                     }
                 }}
             />

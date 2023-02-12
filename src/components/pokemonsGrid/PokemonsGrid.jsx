@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import PokemonCard from './molecules/PokemonCard';
 import OnePiece from 'components/easterEggs/OnePiece';
 
+const searchQuery = 'ol';
+const regexp = new RegExp(searchQuery, 'i');
+
 const PokemonsGrid = ({ searchQuery, lang }) => {
     const [pokemons, setPokemons] = useState([]);
 
@@ -29,17 +32,19 @@ const PokemonsGrid = ({ searchQuery, lang }) => {
                 <OnePiece />
             </Grid>
             {pokemons.map((pokemon, index) => {
-                return (
-                    <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={2}>
-                        <PokemonCard
-                            id={pokemon.id}
-                            name={pokemon.names.fr}
-                            img={pokemon.image}
-                            pokemonTypes={pokemon.types}
-                            englishName={pokemon.names.en}
-                        ></PokemonCard>
-                    </Grid>
-                );
+                if (pokemon.names.fr.match(regexp))
+                    return (
+                        <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={2}>
+                            <PokemonCard
+                                id={pokemon.id}
+                                name={pokemon.names.fr}
+                                img={pokemon.image}
+                                pokemonTypes={pokemon.types}
+                                englishName={pokemon.names.en}
+                            ></PokemonCard>
+                        </Grid>
+                    );
+                return null;
             })}
         </Grid>
     );

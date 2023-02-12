@@ -26,6 +26,7 @@ const PokemonCard = ({ id, name, img, pokemonTypes, englishName }) => {
                 <a
                     href={`https://pokemondb.net/pokedex/${englishName}`}
                     target="_blank"
+                    rel="noreferrer"
                     style={{ textDecoration: 'inherit', color: 'inherit' }}
                 >
                     <div
