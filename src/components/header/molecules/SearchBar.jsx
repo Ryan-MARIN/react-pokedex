@@ -1,16 +1,10 @@
 import { IconButton, InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Stack } from '@mui/system';
-import { useState } from 'react';
 
-const SearchBar = () => {
-    const [searchQuery, setSearchQuery] = useState(null);
-
+const SearchBar = ({ searchQuery, onInputSearchBar }) => {
     function easterEggs(searchQuery) {
-        if (
-            searchQuery.match(/^one piece$/i) &&
-            document.getElementById('one-piece').style.display === 'none'
-        )
+        if (searchQuery.match(/^one piece$/i))
             document.getElementById('one-piece').style.display = 'flex';
         else document.getElementById('one-piece').style.display = 'none';
     }
@@ -23,7 +17,12 @@ const SearchBar = () => {
         <Stack direction={'row'} alignItems={'center'} style={{ width: '30rem' }}>
             <InputBase
                 onInput={(e) => {
-                    setSearchQuery(e.target.value);
+                    onInputSearchBar(e.target.value);
+                }}
+                onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                        handleValidate(searchQuery);
+                    }
                 }}
                 placeholder="Recherchez un Pokémon..."
                 style={{
@@ -33,18 +32,12 @@ const SearchBar = () => {
                     borderStyle: 'none',
                     flexGrow: 1,
                 }}
-                onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                        setSearchQuery(e.target.value);
-                        handleValidate(searchQuery);
-                    }
-                }}
             />
             <IconButton
                 type="submit"
                 aria-label="search"
                 onClick={() => {
-                    handleValidate();
+                    handleValidate(searchQuery);
                 }}
             >
                 <SearchIcon style={{ fill: 'red' }} />
