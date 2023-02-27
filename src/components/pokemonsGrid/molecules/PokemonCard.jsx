@@ -41,7 +41,7 @@ const PokemonCard = ({ id, name, img, pokemonTypes, englishName }) => {
                             justifyContent={'space-between'}
                         >
                             <Box sx={{ fontSize: '18px', fontWeight: 'bold' }}>{name}</Box>
-                            <Box>No.{id}</Box>
+                            <Box>No.{id.toString().padStart(3, '0')}</Box>
                         </Stack>
                         <Stack alignItems={'center'} justifyContent={'space-between'}>
                             {/* //TODO Lazy Loading */}

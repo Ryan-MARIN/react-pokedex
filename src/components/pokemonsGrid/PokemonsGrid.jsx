@@ -4,10 +4,9 @@ import PokemonCard from './molecules/PokemonCard';
 import OnePiece from 'components/easterEggs/OnePiece';
 
 const PokemonsGrid = ({ searchQuery }) => {
-    const [pokemons, setPokemons] = useState([]);
-
     const regexp = new RegExp(searchQuery, 'i');
 
+    const [pokemons, setPokemons] = useState([]);
     useEffect(() => {
         fetch('https://pokedex-jgabriele.vercel.app/pokemons.json', {})
             .then((response) => response.json())

@@ -1,4 +1,4 @@
-import { ButtonBase, Box } from '@mui/material';
+import { ButtonBase, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import React, { useState } from 'react';
 import languages from 'ressources/languages';
 
@@ -10,17 +10,21 @@ const LanguageSelector = () => {
     }
 
     return (
-        <ButtonBase onClick={switchLang} disableRipple>
-            <Box display={{ xs: 'none', md: 'block' }}>Language&nbsp;:&nbsp;</Box>
-            <Box className="mono" display={{ xs: 'none', sm: 'block' }}>
-                {languages[langIndex].toUpperCase()}
-            </Box>
-            &nbsp;
-            <img
-                src={`https://flagsapi.com/${languages[langIndex].toUpperCase()}/shiny/32.png`}
-                alt={`lang_${languages[langIndex]}`}
-            />
-        </ButtonBase>
+        <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+                <InputLabel>Langue</InputLabel>
+                <Select>
+                    {/* {pokemons.map((pokemon, index) => { */}
+                    <MenuItem>
+                        <img
+                            src={`https://flagsapi.com/${languages.fr.toUpperCase()}/shiny/32.png`}
+                            alt={`lang_${languages.fr}`}
+                        />
+                    </MenuItem>
+                    {/* })} */}
+                </Select>
+            </FormControl>
+        </Box>
     );
 };
 
