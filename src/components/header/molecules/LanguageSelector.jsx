@@ -1,30 +1,21 @@
-import { ButtonBase, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import React, { useState } from 'react';
+import { MenuItem, NativeSelect, Select } from '@mui/material';
+import React from 'react';
 import languages from 'ressources/languages';
 
-const LanguageSelector = () => {
-    const [langIndex, setLangIndex] = useState(0);
-
-    function switchLang() {
-        langIndex === languages.length - 1 ? setLangIndex(0) : setLangIndex(langIndex + 1);
-    }
-
+const LanguageSelector = ({ onLanguageChange, language }) => {
     return (
-        <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-                <InputLabel>Langue</InputLabel>
-                <Select>
-                    {/* {pokemons.map((pokemon, index) => { */}
-                    <MenuItem>
-                        <img
-                            src={`https://flagsapi.com/${languages.fr.toUpperCase()}/shiny/32.png`}
-                            alt={`lang_${languages.fr}`}
-                        />
-                    </MenuItem>
-                    {/* })} */}
-                </Select>
-            </FormControl>
-        </Box>
+        <Select
+            value={'aaa'}
+            onChange={onLanguageChange}
+            sx={{
+                minWidth: '140px',
+                color: 'white',
+            }}
+        >
+            {languages.map((lang) => {
+                return <MenuItem key={lang.code}>{lang.name}</MenuItem>;
+            })}
+        </Select>
     );
 };
 

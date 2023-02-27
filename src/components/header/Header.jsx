@@ -4,7 +4,7 @@ import LanguageSelector from './molecules/LanguageSelector';
 import Logo from './atoms/Logo';
 import SearchBar from './molecules/SearchBar';
 
-const Header = ({ searchQuery, onInputSearchBar }) => {
+const Header = ({ searchQuery, onInputSearchBar, language, onLanguageChange }) => {
     return (
         <AppBar>
             <Toolbar>
@@ -12,7 +12,7 @@ const Header = ({ searchQuery, onInputSearchBar }) => {
                 <div style={{ flexGrow: 1, minWidth: '1rem' }} />
                 <SearchBar searchQuery={searchQuery} onInputSearchBar={onInputSearchBar} />
                 <div style={{ flexGrow: 1, minWidth: '0.5rem' }} />
-                <LanguageSelector />
+                <LanguageSelector onLanguageChange={onLanguageChange} language={language} />
             </Toolbar>
         </AppBar>
     );
