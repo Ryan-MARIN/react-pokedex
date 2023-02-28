@@ -10,6 +10,7 @@ const PokemonType = ({ pokemonType, language }) => {
                 margin: '0rem 0.125rem 0rem 0.125rem',
                 fontSize: '12px',
                 color: 'white',
+                fontWeight: 'bold',
             }}
         >
             {pokemonType.translations[language].toUpperCase()}

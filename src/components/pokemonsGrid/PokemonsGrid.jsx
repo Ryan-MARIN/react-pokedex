@@ -11,9 +11,11 @@ const PokemonsGrid = ({ searchQuery, language }) => {
             .then((response) => response.json())
             .then((data) => {
                 setTypes(data);
-                console.log('hey', data);
+            })
+            .catch((e) => {
+                console.log('ERREUR : Ne parvient pas à afficher les types' + e);
             });
-    });
+    }, []);
 
     const [pokemons, setPokemons] = useState([]);
     useEffect(() => {
@@ -21,15 +23,18 @@ const PokemonsGrid = ({ searchQuery, language }) => {
             .then((response) => response.json())
             .then((data) => {
                 setPokemons(data);
+            })
+            .catch((e) => {
+                console.log('ERREUR : Ne parvient pas à afficher les pokémons' + e);
             });
-    });
+    }, []);
 
     return (
         <Grid container display={'flex'}>
             <Grid
+                item
                 id="one-piece"
                 style={{ display: 'none' }}
-                item
                 xs={12}
                 sm={6}
                 md={4}
@@ -38,10 +43,10 @@ const PokemonsGrid = ({ searchQuery, language }) => {
             >
                 <OnePiece />
             </Grid>
-            {pokemons.map((pokemon, index) => {
+            {pokemons.map((pokemon) => {
                 if (pokemon.names.fr.match(regexp))
                     return (
-                        <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={2}>
+                        <Grid item key={pokemon.id} xs={12} sm={6} md={4} lg={3} xl={2}>
                             <PokemonCard
                                 id={pokemon.id}
                                 englishName={pokemon.names.en}
