@@ -6,7 +6,6 @@ const PokemonTypes = ({ pokemonTypes, language }) => {
     return (
         <Stack direction={'row'}>
             {pokemonTypes.map((pokemonType, index) => {
-                console.log(index, pokemonType.translations['en']);
                 return (
                     <PokemonType
                         key={pokemonType.translations['en']}

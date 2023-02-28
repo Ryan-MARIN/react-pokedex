@@ -2,7 +2,7 @@ import { IconButton, InputBase } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Stack } from '@mui/system';
 
-const SearchBar = ({ searchQuery, onInputSearchBar }) => {
+const SearchBar = ({ display, searchQuery, onInputSearchBar, sx }) => {
     function easterEggs(searchQuery) {
         if (searchQuery.match(/^one piece$/i))
             document.getElementById('one-piece').style.display = 'flex';
@@ -14,7 +14,19 @@ const SearchBar = ({ searchQuery, onInputSearchBar }) => {
     }
 
     return (
-        <Stack direction={'row'} alignItems={'center'} style={{ width: '30rem' }}>
+        <Stack
+            direction={'row'}
+            alignItems={'center'}
+            sx={{
+                backgroundColor: 'white',
+                borderRadius: '100rem',
+                pl: '1rem',
+                borderStyle: 'none',
+                flexGrow: 1,
+                display: display,
+                ...sx,
+            }}
+        >
             <InputBase
                 onInput={(e) => {
                     onInputSearchBar(e.target.value);
@@ -25,13 +37,11 @@ const SearchBar = ({ searchQuery, onInputSearchBar }) => {
                     }
                 }}
                 placeholder="Recherchez un Pokémon..."
-                style={{
-                    backgroundColor: 'white',
-                    borderRadius: '100rem',
-                    padding: '0rem 0.5rem 0rem',
+                sx={{
                     borderStyle: 'none',
                     flexGrow: 1,
                 }}
+                autoFocus
             />
             <IconButton
                 type="submit"

@@ -10,7 +10,9 @@ const LanguageSelector = ({ onLanguageChange, language }) => {
             sx={{
                 minWidth: '150px',
                 color: 'white',
+                borderRadius: '100px',
                 '& .MuiSelect-select': {
+                    borderColor: 'red',
                     py: '0.25em',
                     display: 'flex',
                     alignItems: 'center',
@@ -20,7 +22,11 @@ const LanguageSelector = ({ onLanguageChange, language }) => {
             {languages.map((lang) => {
                 return (
                     <MenuItem key={lang.code} value={lang.code}>
-                        <img alt="flag" src={`https://flagsapi.com/${lang.flag}/shiny/32.png`} />
+                        <img
+                            alt="flag"
+                            src={`https://flagsapi.com/${lang.flag}/shiny/32.png`}
+                            loading="lazy"
+                        />
                         <span>&nbsp;{lang.name}</span>
                     </MenuItem>
                 );

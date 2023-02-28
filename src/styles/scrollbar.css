@@ -3,8 +3,12 @@
     height: 16px;
 }
 
+*::-webkit-scrollbar-track {
+    background-color: #383b42;
+}
+
 *::-webkit-scrollbar-corner {
-    background-color: #292C33;
+    background-color: #383b42;
 }
     
 *::-webkit-scrollbar-thumb {

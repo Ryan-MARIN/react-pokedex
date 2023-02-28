@@ -1,14 +1,40 @@
 import Header from 'components/header/Header';
 import PokemonsGrid from 'components/pokemonsGrid/PokemonsGrid';
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import './styles/index.css';
 import './styles/scrollbar.css';
 import { Box } from '@mui/system';
 import Footer from 'components/Footer';
+import PokemonsDetails from 'components/pokemonDetails/PokemonsDetails';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 function App() {
     const [searchQuery, setSearchQuery] = useState('');
     const [language, setLanguage] = useState('fr');
+
+    const [types, setTypes] = useState([]);
+    useEffect(() => {
+        fetch('https://pokedex-jgabriele.vercel.app/types.json', {})
+            .then((response) => response.json())
+            .then((data) => {
+                setTypes(data);
+            })
+            .catch((e) => {
+                console.log('ERREUR : Ne parvient pas à afficher les types' + e);
+            });
+    }, []);
+
+    const [pokemons, setPokemons] = useState([]);
+    useEffect(() => {
+        fetch('https://pokedex-jgabriele.vercel.app/pokemons.json', {})
+            .then((response) => response.json())
+            .then((data) => {
+                setPokemons(data);
+            })
+            .catch((e) => {
+                console.log('ERREUR : Ne parvient pas à afficher les pokémons' + e);
+            });
+    }, []);
 
     function onInputSearchBar(value) {
         setSearchQuery(value);
@@ -19,16 +45,42 @@ function App() {
     }
 
     return (
-        <Box paddingTop={'4rem'} paddingX={{ xs: '1rem', sm: '1.5rem' }}>
-            <Header
-                searchQuery={searchQuery}
-                onInputSearchBar={onInputSearchBar}
-                language={language}
-                onLanguageChange={onLanguageChange}
-            />
-            <PokemonsGrid searchQuery={searchQuery} language={language} />
-            <Footer />
-        </Box>
+        <BrowserRouter>
+            <Box paddingTop={'4rem'} paddingX={{ xs: '1rem', sm: '1.5rem' }}>
+                <Header
+                    searchQuery={searchQuery}
+                    onInputSearchBar={onInputSearchBar}
+                    language={language}
+                    onLanguageChange={onLanguageChange}
+                />
+                <Routes>
+                    <Route
+                        path="/:pokemonId"
+                        element={
+                            <PokemonsDetails
+                                language={language}
+                                types={types}
+                                pokemons={pokemons}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/"
+                        element={
+                            <PokemonsGrid
+                                searchQuery={searchQuery}
+                                onInputSearchBar={onInputSearchBar}
+                                language={language}
+                                types={types}
+                                pokemons={pokemons}
+                            />
+                        }
+                    />
+                </Routes>
+                <Outlet />
+                <Footer />
+            </Box>
+        </BrowserRouter>
     );
 }
 

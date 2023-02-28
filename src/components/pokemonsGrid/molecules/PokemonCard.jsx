@@ -2,6 +2,7 @@ import { CardActionArea, Paper, Box } from '@mui/material';
 import React from 'react';
 import PokemonTypes from './PokemonTypes';
 import { Stack } from '@mui/system';
+import { Link } from 'react-router-dom';
 // import logoPokedexSmall from 'ressources/logo-pokedex-small.svg';
 
 const PokemonCard = ({ id, name, img, pokemonTypes, englishName, language }) => {
@@ -15,6 +16,7 @@ const PokemonCard = ({ id, name, img, pokemonTypes, englishName, language }) => 
                 '&:hover': {
                     m: '0.25rem',
                     borderRadius: '1rem',
+                    bgcolor: 'white',
                 },
             }}
         >
@@ -23,12 +25,7 @@ const PokemonCard = ({ id, name, img, pokemonTypes, englishName, language }) => 
                     '&:hover': { p: '0.25rem' },
                 }}
             >
-                <a
-                    href={`https://pokemondb.net/pokedex/${englishName}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ textDecoration: 'inherit', color: 'inherit' }}
-                >
+                <Link to={`/${id}`} style={{ textDecoration: 'inherit', color: 'inherit' }}>
                     <div
                         style={{
                             padding: '0.5rem',
@@ -39,16 +36,21 @@ const PokemonCard = ({ id, name, img, pokemonTypes, englishName, language }) => 
                             direction={'row'}
                             alignItems={'top'}
                             justifyContent={'space-between'}
+                            sx={{
+                                '&:hover': {
+                                    color: 'red',
+                                },
+                            }}
                         >
                             <Box sx={{ fontSize: '18px', fontWeight: 'bold' }}>{name}</Box>
                             <Box>No.{id.toString().padStart(3, '0')}</Box>
                         </Stack>
                         <Stack alignItems={'center'} justifyContent={'space-between'}>
-                            <img src={img} alt={name.toLowerCase()} />
+                            <img src={img} alt={name.toLowerCase()} loading="lazy" />
                             <PokemonTypes pokemonTypes={pokemonTypes} language={language} />
                         </Stack>
                     </div>
-                </a>
+                </Link>
             </CardActionArea>
         </Paper>
     );
