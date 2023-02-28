@@ -4,7 +4,7 @@ import PokemonTypes from './PokemonTypes';
 import { Stack } from '@mui/system';
 // import logoPokedexSmall from 'ressources/logo-pokedex-small.svg';
 
-const PokemonCard = ({ id, name, img, pokemonTypes, englishName }) => {
+const PokemonCard = ({ id, name, img, pokemonTypes, englishName, language }) => {
     return (
         <Paper
             elevation={6}
@@ -44,10 +44,8 @@ const PokemonCard = ({ id, name, img, pokemonTypes, englishName }) => {
                             <Box>No.{id.toString().padStart(3, '0')}</Box>
                         </Stack>
                         <Stack alignItems={'center'} justifyContent={'space-between'}>
-                            {/* //TODO Lazy Loading */}
                             <img src={img} alt={name.toLowerCase()} />
-                            {/* <img src={logoPokedexSmall} alt={name.toLowerCase()} height="96px" /> */}
-                            <PokemonTypes types={pokemonTypes} />
+                            <PokemonTypes pokemonTypes={pokemonTypes} language={language} />
                         </Stack>
                     </div>
                 </a>

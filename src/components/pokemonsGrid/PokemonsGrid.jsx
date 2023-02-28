@@ -3,8 +3,17 @@ import React, { useEffect, useState } from 'react';
 import PokemonCard from './molecules/PokemonCard';
 import OnePiece from 'components/easterEggs/OnePiece';
 
-const PokemonsGrid = ({ searchQuery }) => {
+const PokemonsGrid = ({ searchQuery, language }) => {
     const regexp = new RegExp(searchQuery, 'i');
+    const [types, setTypes] = useState([]);
+    useEffect(() => {
+        fetch('https://pokedex-jgabriele.vercel.app/types.json', {})
+            .then((response) => response.json())
+            .then((data) => {
+                setTypes(data);
+                console.log('hey', data);
+            });
+    });
 
     const [pokemons, setPokemons] = useState([]);
     useEffect(() => {
@@ -35,11 +44,14 @@ const PokemonsGrid = ({ searchQuery }) => {
                         <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={2}>
                             <PokemonCard
                                 id={pokemon.id}
-                                name={pokemon.names.fr}
-                                img={pokemon.image}
-                                pokemonTypes={pokemon.types}
                                 englishName={pokemon.names.en}
-                            ></PokemonCard>
+                                name={pokemon.names[language]}
+                                img={pokemon.image}
+                                pokemonTypes={pokemon.types.map((pokemonType) => {
+                                    return types[pokemonType];
+                                })}
+                                language={language}
+                            />
                         </Grid>
                     );
                 return null;

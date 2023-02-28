@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PokemonType from '../atoms/PokemonType';
 import { Stack } from '@mui/system';
 
-const PokemonTypes = ({ types }) => {
+const PokemonTypes = ({ pokemonTypes, language }) => {
     return (
         <Stack direction={'row'}>
-            <PokemonType type={types[0]} />
-            {types[1] ? <PokemonType type={types[1]} /> : null}
+            {pokemonTypes.map((pokemonType) => (
+                <PokemonType pokemonType={pokemonType} language={language} />
+            ))}
         </Stack>
     );
 };

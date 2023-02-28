@@ -26,7 +26,7 @@ function App() {
                 language={language}
                 onLanguageChange={onLanguageChange}
             />
-            <PokemonsGrid searchQuery={searchQuery} />
+            <PokemonsGrid searchQuery={searchQuery} language={language} />
             <Footer />
         </Box>
     );
