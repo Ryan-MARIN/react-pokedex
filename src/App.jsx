@@ -5,13 +5,9 @@ import './styles/index.css';
 import './styles/scrollbar.css';
 import { Box } from '@mui/system';
 import Footer from 'components/Footer';
-import PokemonsDetails from 'components/pokemonDetails/PokemonsDetails';
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 function App() {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [language, setLanguage] = useState('fr');
-
     const [types, setTypes] = useState([]);
     useEffect(() => {
         fetch('https://pokedex-jgabriele.vercel.app/types.json', {})
@@ -36,10 +32,12 @@ function App() {
             });
     }, []);
 
+    const [searchQuery, setSearchQuery] = useState('');
     function onInputSearchBar(value) {
         setSearchQuery(value);
     }
 
+    const [language, setLanguage] = useState('fr');
     function onLanguageChange(event) {
         setLanguage(event.target.value);
     }
@@ -55,9 +53,11 @@ function App() {
                 />
                 <Routes>
                     <Route
-                        path="/:pokemonId"
+                        path="/"
                         element={
-                            <PokemonsDetails
+                            <PokemonsGrid
+                                searchQuery={searchQuery}
+                                onInputSearchBar={onInputSearchBar}
                                 language={language}
                                 types={types}
                                 pokemons={pokemons}
@@ -65,7 +65,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/"
+                        path="/:pokemonId"
                         element={
                             <PokemonsGrid
                                 searchQuery={searchQuery}

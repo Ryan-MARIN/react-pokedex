@@ -1,58 +1,64 @@
-import { CardActionArea, Paper, Box } from '@mui/material';
+import { CardActionArea, Paper, Box, Dialog } from '@mui/material';
 import React from 'react';
 import PokemonTypes from './PokemonTypes';
 import { Stack } from '@mui/system';
 import { Link } from 'react-router-dom';
-// import logoPokedexSmall from 'ressources/logo-pokedex-small.svg';
+import { useLocation } from 'react-router-dom';
 
-const PokemonCard = ({ id, name, img, pokemonTypes, englishName, language }) => {
+const PokemonCard = ({ id, name, img, pokemonTypes, language, onClick }) => {
     return (
-        <Paper
-            elevation={6}
-            sx={{
-                m: '0.5rem',
-                borderRadius: '0.5rem',
-                overflow: 'hidden',
-                '&:hover': {
-                    m: '0.25rem',
-                    borderRadius: '1rem',
-                    bgcolor: 'white',
-                },
-            }}
-        >
-            <CardActionArea
+        <>
+            <Paper
+                elevation={6}
                 sx={{
-                    '&:hover': { p: '0.25rem' },
+                    m: '0.5rem',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    '&:hover': {
+                        m: '0.25rem',
+                        borderRadius: '1rem',
+                        bgcolor: 'white',
+                    },
                 }}
             >
-                <Link to={`/${id}`} style={{ textDecoration: 'inherit', color: 'inherit' }}>
-                    <div
-                        style={{
-                            padding: '0.5rem',
-                            justifyContent: 'center',
-                        }}
+                <CardActionArea
+                    sx={{
+                        '&:hover': { p: '0.25rem' },
+                    }}
+                >
+                    <Link
+                        to={`/${id}`}
+                        style={{ textDecoration: 'inherit', color: 'inherit' }}
+                        onClick={onClick}
                     >
-                        <Stack
-                            direction={'row'}
-                            alignItems={'top'}
-                            justifyContent={'space-between'}
-                            sx={{
-                                '&:hover': {
-                                    color: 'red',
-                                },
+                        <div
+                            style={{
+                                padding: '0.5rem',
+                                justifyContent: 'center',
                             }}
                         >
-                            <Box sx={{ fontSize: '18px', fontWeight: 'bold' }}>{name}</Box>
-                            <Box>No.{id.toString().padStart(3, '0')}</Box>
-                        </Stack>
-                        <Stack alignItems={'center'} justifyContent={'space-between'}>
-                            <img src={img} alt={name.toLowerCase()} loading="lazy" />
-                            <PokemonTypes pokemonTypes={pokemonTypes} language={language} />
-                        </Stack>
-                    </div>
-                </Link>
-            </CardActionArea>
-        </Paper>
+                            <Stack
+                                direction={'row'}
+                                alignItems={'top'}
+                                justifyContent={'space-between'}
+                                sx={{
+                                    '&:hover': {
+                                        color: 'red',
+                                    },
+                                }}
+                            >
+                                <Box sx={{ fontSize: '18px', fontWeight: 'bold' }}>{name}</Box>
+                                <Box>No.{id.toString().padStart(3, '0')}</Box>
+                            </Stack>
+                            <Stack alignItems={'center'} justifyContent={'space-between'}>
+                                <img src={img} alt={name.toLowerCase()} loading="lazy" />
+                                <PokemonTypes pokemonTypes={pokemonTypes} language={language} />
+                            </Stack>
+                        </div>
+                    </Link>
+                </CardActionArea>
+            </Paper>
+        </>
     );
 };
 
